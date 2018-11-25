@@ -1,0 +1,14 @@
+.num_pad_container {
+  grid-area: numpad;
+}
+.num_pad {
+  display: grid;
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: repeat(5, 100px);
+  grid-template-areas: 
+  "clear clear div mult"
+  "n7 n8 n9 min"
+  "n4 n5 n6 plus"
+  "n1 n2 n3 equal"
+  "n0 n0 point equal"
+}

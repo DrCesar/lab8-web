@@ -1,0 +1,13 @@
+.calculator {
+  display: grid;
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: 50px repeat(6, 100px);
+  grid-template-areas:
+  "dis dis dis dis" 
+  "display display display display"
+  "numpad numpad numpad numpad"
+  "numpad numpad numpad numpad"
+  "numpad numpad numpad numpad"
+  "numpad numpad numpad numpad"
+  "numpad numpad numpad numpad"
+}
