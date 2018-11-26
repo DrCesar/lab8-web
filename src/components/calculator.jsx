@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+// import { connect } from 'react-redux';
+// import PropTypes from 'prop-types';
 
 import NumPad from './num-pad/num-pad';
 import Display from './display/display';
-import { addNumber } from '../actions';
+// import { addNumber } from '../actions';
 import './calculator.css';
 
 class Calculator extends Component {
   constructor(props) {
     super(props);
-    const { addNum } = this.props;
     console.log(props);
-    addNum('0');
     this.state = {
       display: '',
       firstOperand: '',
@@ -40,8 +38,8 @@ class Calculator extends Component {
             case 'x':
               result = Number(firstOperand) * Number(display);
               break;
-            case '%':
-              result = Number(firstOperand) % Number(display);
+            case '/':
+              result = Number(firstOperand) / Number(display);
               break;
             case '+':
               result = Number(firstOperand) + Number(display);
@@ -53,11 +51,16 @@ class Calculator extends Component {
               result = 0;
               break;
           }
+          console.log(operand);
+          console.log(result.length);
           if (result > 0 && result < 999999999) {
+            if (result.toString().length > 9) {
+              result = result.toFixed(2);
+            }
             strResutl = result.toString();
           }
 
-          this.setState({ display: strResutl, firstOperand: '' });
+          this.setState({ display: strResutl, firstOperand: '', operand: '' });
           break;
         default:
           this.setState({ display: '', firstOperand: display, operand: value });
@@ -78,19 +81,16 @@ class Calculator extends Component {
   }
 }
 
-Calculator.propTypes = {
-  addNum: PropTypes.func.isRequired,
-};
+// Calculator.propTypes = {
+//   addNum: PropTypes.func.isRequired,
+// };
 
-const mapStateToProps = state => ({
-  state,
-});
+// const mapStateToProps = state => ({
+//   state,
+// });
 
-const mapDispatchToProps = dispatch => ({
-  addNum: number => dispatch(addNumber(number)),
-});
+// const mapDispatchToProps = dispatch => ({
+//   addNum: number => dispatch(addNumber(number)),
+// });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Calculator);
+export default Calculator;

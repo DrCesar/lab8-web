@@ -4,12 +4,13 @@ const addNumber = number => ({
   number,
 });
 
-const addOperand = operand => ({
-  type: 'ADD_OPERAND',
-  operand,
-});
+// const addOperand = operand => ({
+//   type: 'ADD_OPERAND',
+//   operand,
+// });
 
-export default {
+const actions = {
   addNumber,
-  addOperand,
 };
+
+export default actions;
